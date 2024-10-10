@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { Company } from "../../services/companies/types";
+import { ChevronRightIcon } from 'lucide-react';
 
 interface CompanyCardProps {
     company: Company;
@@ -20,7 +21,7 @@ export const CompanyCard: React.FC<CompanyCardProps> = ({ company }) => {
                 <p className="text-slate-500 text-sm line-clamp-1 max-w-[200px]">{company.description}</p>
             </div>
             <div className="ml-auto">
-                <span className="text-2xl">→</span>
+                <ChevronRightIcon className="w-6 h-6 text-slate-500" />
             </div>
         </div>
     );
