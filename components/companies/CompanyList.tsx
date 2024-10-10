@@ -11,7 +11,7 @@ export const CompanyListItem: React.FC<CompanyListItemProps> = ({ company }) => 
         <div className="company-card flex items-center my-4 border-b border-slate-200 pb-4">
             <div className="relative w-10 h-10 mr-4 flex justify-center items-center">
                 <Image
-                    className="max-h-10 max-w-10 w-auto object-contain"
+                    className="h-auto w-auto object-contain"
                     src={company.iconUrl || company.logoLightUrl}
                     alt={`${company.companyName} logo`}
                     width={40}
