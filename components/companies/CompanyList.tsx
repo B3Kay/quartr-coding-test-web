@@ -2,11 +2,11 @@ import Image from 'next/image'
 import { Company } from "../../services/companies/types";
 import { ChevronRightIcon } from 'lucide-react';
 
-interface CompanyCardProps {
+interface CompanyListItemProps {
     company: Company;
 }
 
-export const CompanyCard: React.FC<CompanyCardProps> = ({ company }) => {
+export const CompanyListItem: React.FC<CompanyListItemProps> = ({ company }) => {
     return (
         <div className="company-card flex items-center my-4 border-b border-slate-200 pb-4">
             <Image

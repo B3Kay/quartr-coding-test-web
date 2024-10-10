@@ -1,4 +1,4 @@
-import { CompanyCard } from "../components/companies/CompanyCard";
+import { CompanyListItem } from "../components/companies/CompanyList";
 import { Company } from "../services/companies/types";
 
 async function fetchCompanies() {
@@ -25,7 +25,7 @@ export default async function Home() {
 
       <h2 className="text-base font-normal text-slate-500">Trending companies</h2>
       <div className="">
-        {companies.map((company) => <CompanyCard key={company.companyId} company={company} />)}
+        {companies.map((company) => <CompanyListItem key={company.companyId} company={company} />)}
       </div>
     </main>
   );
