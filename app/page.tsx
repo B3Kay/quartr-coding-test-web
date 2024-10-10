@@ -1,5 +1,7 @@
 import { Inter } from "@next/font/google";
+import { CompanyCard } from "../components/companies/CompanyCard";
 import { Company } from "../services/companies/types";
+
 const inter = Inter({ subsets: ["latin"] });
 
 
@@ -14,19 +16,6 @@ async function fetchCompanies() {
 }
 
 
-interface CompanyCardProps {
-  company: Company;
-}
-
-const CompanyCard: React.FC<CompanyCardProps> = ({ company }) => {
-  return (
-    <div className="company-card">
-      <img style={{ maxHeight: "64px", width: "auto" }} src={company.logoLightUrl} alt={`${company.companyName} logo`} />
-      <h3>{company.displayName}</h3>
-      <p>{company.description}</p>
-    </div>
-  );
-};
 
 
 export default async function Home() {
