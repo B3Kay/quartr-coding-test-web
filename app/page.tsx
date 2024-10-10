@@ -1,9 +1,5 @@
-import { Inter } from "@next/font/google";
 import { CompanyCard } from "../components/companies/CompanyCard";
 import { Company } from "../services/companies/types";
-
-const inter = Inter({ subsets: ["latin"] });
-
 
 async function fetchCompanies() {
   const res = await fetch("http://localhost:3000/api/companies");
@@ -23,8 +19,11 @@ export default async function Home() {
 
   return (
     <main>
-      <h2 className={inter.className}>Quartr</h2>
-      <p className={inter.className}>Trending companies</p>
+      <h1 className="text-3xl font-bold underline">
+        Quartr
+      </h1>
+      <h2 >Quartr</h2>
+      <p >Trending companies</p>
       <div>{companies.map((company) => <CompanyCard key={company.companyId} company={company} />)}</div>
     </main>
   );
