@@ -1,7 +1,7 @@
+import { baseUrl } from "../../../config";
 import { Company } from "../../../services/companies/types";
 import { notFound } from 'next/navigation';
 
-const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000'; // Ensure this is set in your environment variables
 
 const getCompany = async (id: number) => {
     const res = await fetch(`${baseUrl}/api/company?id=${id}`);
@@ -16,7 +16,7 @@ const getCompany = async (id: number) => {
 }
 
 export default async function CompanyPage({ params }: { params: { id: string } }) {
-    const companyId = parseInt(params.id, 10);
+    const companyId = parseInt(params.id);
 
     const company = await getCompany(companyId);
 

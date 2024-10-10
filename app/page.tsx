@@ -1,8 +1,11 @@
 import { CompanyListItem } from "../components/companies/CompanyListItem";
+import { baseUrl } from "../config";
 import { Company } from "../services/companies/types";
 
+
 async function fetchCompanies() {
-  const res = await fetch("http://localhost:3000/api/companies");
+  const res = await fetch(`${baseUrl}/api/companies`);
+  console.log(res);
   if (!res.ok) {
     console.warn("Unexpected response status:", res.status);
     throw new Error("Failed to fetch data");
@@ -10,9 +13,6 @@ async function fetchCompanies() {
   const data = await res.json();
   return data.data as Company[];
 }
-
-
-
 
 export default async function Home() {
   const companies = await fetchCompanies();

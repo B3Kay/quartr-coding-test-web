@@ -22,7 +22,7 @@ export const CompanyListItem: React.FC<CompanyListItemProps> = ({ company }) => 
                     />
                 </div>
                 <div className="flex-1">
-                    <h3 className="m-0  text-md ">{company.displayName}</h3>
+                    <h3 className="text-md">{company.displayName}</h3>
                     <p className="text-slate-500 text-sm line-clamp-1 max-w-[200px]">{company.description}</p>
                 </div>
                 <div className="ml-auto">
