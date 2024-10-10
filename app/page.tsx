@@ -22,8 +22,7 @@ export default async function Home() {
       <h1 className="text-3xl font-bold underline">
         Quartr
       </h1>
-      <h2 >Quartr</h2>
-      <p >Trending companies</p>
+      <h2 className="text-base font-normal text-slate-500">Trending companies</h2>
       <div>{companies.map((company) => <CompanyCard key={company.companyId} company={company} />)}</div>
     </main>
   );
