@@ -18,12 +18,15 @@ export default async function Home() {
   const companies = await fetchCompanies();
 
   return (
-    <main>
-      <h1 className="text-3xl font-bold underline">
+    <main className="container mx-auto p-4">
+      <h1 className="text-5xl font-bold mb-7">
         Quartr
       </h1>
+
       <h2 className="text-base font-normal text-slate-500">Trending companies</h2>
-      <div>{companies.map((company) => <CompanyCard key={company.companyId} company={company} />)}</div>
+      <div className="">
+        {companies.map((company) => <CompanyCard key={company.companyId} company={company} />)}
+      </div>
     </main>
   );
 }
