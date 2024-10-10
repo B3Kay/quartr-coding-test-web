@@ -1,4 +1,4 @@
-import { CompanyListItem } from "../components/companies/CompanyList";
+import { CompanyListItem } from "../components/companies/CompanyListItem";
 import { Company } from "../services/companies/types";
 
 async function fetchCompanies() {
@@ -18,7 +18,7 @@ export default async function Home() {
   const companies = await fetchCompanies();
 
   return (
-    <main className="container mx-auto p-4">
+    <main className="">
       <h1 className="text-5xl font-bold mb-7">
         Quartr
       </h1>

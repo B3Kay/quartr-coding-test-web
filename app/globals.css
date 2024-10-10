@@ -16,7 +16,7 @@ body {
 
 body {
   color: #333;
-  background: #f1f1f1;
+  @apply bg-gray-100;
 }
 
 a {
