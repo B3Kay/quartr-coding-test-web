@@ -1,28 +1,8 @@
 import Link from "next/link";
-import { baseUrl } from "../../../config";
-import { Company } from "../../../services/companies/types";
 import { notFound } from 'next/navigation';
 import { ChevronLeftIcon } from "lucide-react";
+import { getCompany } from '../../../services/companies/api/getCompany';
 
-type CompanyResponse = {
-    company?: Company;
-    error?: string;
-}
-
-const getCompany = async (id: number): Promise<CompanyResponse> => {
-    try {
-        const res: Response = await fetch(`${baseUrl}/api/company?id=${id}`);
-
-        if (!res.ok) {
-            return { error: `HTTP error: ${res.status} ${res.statusText}` };
-        }
-        const data = await res.json();
-        return { company: data };
-    } catch (error) {
-        console.error('Error fetching company:', error);
-        return { error: 'An error occurred while fetching the company' };
-    }
-}
 
 export default async function CompanyPage({ params }: { params: { id: string } }) {
     const companyId = parseInt(params.id);

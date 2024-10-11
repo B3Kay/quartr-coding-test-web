@@ -1,5 +1,5 @@
 
-import { CompaniesDataResponse } from "./types";
+import { CompaniesDataResponse } from "../types";
 
 
 export const companiesData: CompaniesDataResponse = {

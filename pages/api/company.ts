@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Company } from "../../services/companies/types";
-import { companyService } from "../../services/companies/companyService";
+import { companyService } from "../../services/companies/data/companyService";
 
 export default function handler(
     req: NextApiRequest,

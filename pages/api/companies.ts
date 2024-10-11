@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import { CompaniesDataResponse } from "../../services/companies/types";
-import { companyService } from "../../services/companies/companyService";
+import { companyService } from "../../services/companies/data/companyService";
 
 
 export default function handler(
