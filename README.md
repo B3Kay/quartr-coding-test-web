@@ -14,6 +14,21 @@ npm install
 npm run dev
 ```
 
+**Running the tests**
+
+```
+npm run test
+```
+
+**Environment variables**
+
+Make sure you have a .enf file.
+Create a .env file in the root of the project and add the following:
+
+```
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+```
+
 ## Your assignment
 
 We are going to display a list of trending companies on our start page, your assigment is to create a list of companies that we can display on our start page. The design is not complete, but should give you a good idea on what direction to take. The code provided is functional, but it’s difficult to read and understand. It needs significant refactoring to improve its structure and maintainability.
