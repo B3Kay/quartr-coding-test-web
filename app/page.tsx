@@ -2,20 +2,30 @@ import { CompanyListItem } from "../components/companies/CompanyListItem";
 import { baseUrl } from "../config";
 import { Company } from "../services/companies/types";
 
+type CompaniesResponse = {
+  companies?: Company[];
+  error?: string;
+}
 
-async function fetchCompanies() {
-  const res = await fetch(`${baseUrl}/api/companies`);
-  console.log(res);
-  if (!res.ok) {
-    console.warn("Unexpected response status:", res.status);
-    throw new Error("Failed to fetch data");
+
+async function getCompanies(): Promise<CompaniesResponse> {
+  try {
+    const res = await fetch(`${baseUrl}/api/companies`);
+
+    if (!res.ok) {
+      return { error: `HTTP error: ${res.status} ${res.statusText}` };
+    }
+
+    const data = await res.json();
+    return { companies: data.data };
+  } catch (error) {
+    console.error("Error fetching companies:", error);
+    return { error: "An error occurred while fetching data" };
   }
-  const data = await res.json();
-  return data.data as Company[];
 }
 
 export default async function Home() {
-  const companies = await fetchCompanies();
+  const response = await getCompanies();
 
   return (
     <main className="">
@@ -25,7 +35,11 @@ export default async function Home() {
 
       <h2 className="text-base font-normal text-slate-500">Trending companies</h2>
       <div className="">
-        {companies.map((company) => <CompanyListItem key={company.companyId} company={company} />)}
+        {response.companies && response.companies.length > 0 ? (
+          response.companies.map((company) => <CompanyListItem key={company.companyId} company={company} />)
+        ) : (
+          <p>No companies available at the moment.</p>
+        )}
       </div>
     </main>
   );

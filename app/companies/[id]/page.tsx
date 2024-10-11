@@ -4,33 +4,32 @@ import { Company } from "../../../services/companies/types";
 import { notFound } from 'next/navigation';
 import { ChevronLeftIcon } from "lucide-react";
 
-
-type CompanySuccessful = {
-    company: Company;
-    error: null;
+type CompanyResponse = {
+    company?: Company;
+    error?: string;
 }
 
-type CompanyError = {
-    company: null;
-    error: string;
-}
+const getCompany = async (id: number): Promise<CompanyResponse> => {
+    try {
+        const res: Response = await fetch(`${baseUrl}/api/company?id=${id}`);
 
-const getCompany = async (id: number) => {
-    const res = await fetch(`${baseUrl}/api/company?id=${id}`);
-
-    if (!res.ok) {
-        return { company: null, error: 'Company not found' } as CompanyError;
+        if (!res.ok) {
+            return { error: `HTTP error: ${res.status} ${res.statusText}` };
+        }
+        const data = await res.json();
+        return { company: data };
+    } catch (error) {
+        console.error('Error fetching company:', error);
+        return { error: 'An error occurred while fetching the company' };
     }
-    const data = await res.json();
-    return { company: data, error: null } as CompanySuccessful;
 }
 
 export default async function CompanyPage({ params }: { params: { id: string } }) {
     const companyId = parseInt(params.id);
 
-    const response = await getCompany(companyId);
+    const { company, error } = await getCompany(companyId);
 
-    if (response.error || !response.company) {
+    if (error || !company) {
         notFound();
     }
 
@@ -38,6 +37,6 @@ export default async function CompanyPage({ params }: { params: { id: string } }
         <Link className="text-blue-500 hover:underline flex items-center mb-6" href="/">
             <ChevronLeftIcon className="w-4 h-4 mr-2" />Go back
         </Link>
-        <h1 className="text-2xl font-bold">{response.company.companyName}</h1>
+        <h1 className="text-2xl font-bold">{company?.companyName}</h1>
     </div>
 }
